@@ -16,12 +16,12 @@ namespace textAdventure
 {
     class Program
     {
-        static void beat()  //waits exactly one seconc
+        static void wait()  //used to wait for one second.
         {
             System.Threading.Thread.Sleep(1000);
         }//beat
 
-        static void wait(int seconds)  //waits any multiple of 1 second
+        static void waitCustom(int seconds)  //used to wait for any multiple of 1 second.
         {
             for (int i =0; i<seconds ;i++)
             {
@@ -29,8 +29,8 @@ namespace textAdventure
             }//for
         }//wait
 
-        static void write(string text) //uses Thread.Sleep to slow down the "typing speed" of Console.Write
-        {                             //for the typical speed
+        static void write(string text) //uses foreach and Thread.Sleep to slow down the "typing speed" of Console.Write.
+        {                             //used for the chosen typical speed.
             foreach(char c in text)
             {
                 Console.Write(c);
@@ -38,9 +38,8 @@ namespace textAdventure
             }//foreach
         }//write
 
-        static void writeSlower(string text) //uses Thread.Sleep to slow down the "typing speed" of Console.Write 
-                                            //for a dramatic or comedic speed
-        {
+        static void writeSlower(string text) //uses foreach and Thread.Sleep to slow down the "typing speed" of Console.Write 
+        {                                   //used for a chosen slower speed.
             foreach (char c in text)
             {
                 Console.Write(c);
@@ -48,15 +47,13 @@ namespace textAdventure
             }//foreach
         }//writeDramatic
 
-        static void writeCustom(string text, int time) //uses Thread.Sleep for different typing speeds
-        {                                             //for any other spped
-                                                     //can also be used with an empty string for an atypical pause
-            foreach (char c in text)
+        static void writeCustom(string text, int time) //uses foreach and Thread.Sleep for different typing speeds.
+        {                                             //used for any other speed.
+            foreach (char c in text)                 //also used with an empty string for an atypical pause.
             {
                 Console.Write(c);
                 System.Threading.Thread.Sleep(time);
             }//foreach
-
         }//writeCustom
 
         static void paragraph() //used to break up paragraphs
@@ -65,13 +62,12 @@ namespace textAdventure
             Console.Clear();
         }
 
-        static void keyWordFont(string word) //changes font color of a keyword
-        {
+        static void keyWordFont(string word) //changes font color of a keyword 
+        {                                   //writes keyword at a slower speed
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            writeCustom(word.ToUpper(), 200);
+            writeCustom(word.ToUpper(), 100);
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             //LEARN KEYWORD
-
         }//keyWordFont
 
         static void instructionsFont(string text) //changes font color for instruction text
@@ -81,21 +77,16 @@ namespace textAdventure
             Console.ForegroundColor = ConsoleColor.DarkGreen;
         }//instructionsFont
 
-        static void instructions()  //Prints basic instructions and a full list of commands
+        static void commands()  //Prints a full list of commands
         {
 
-        }//instructions
+        }//commands
 
 
         static double combat(double health)//more input?
         {
             return health;
-        }
-        static void command(string command, string keyword) //Illud attempts to do <COMMAND> on <KEYWORD>.
-        {
-            //PUNCH, TAKE, EXAMINE, USE, ENTER, JUMP, ATTACK
-
-        }//command
+        }//combat
 
         static void titleScreen()
         {
@@ -108,25 +99,25 @@ namespace textAdventure
         {
             //Basic instructions
 
-            instructionsFont("Welcome to Illud's Oddesy! All commands will be one or two words.\nDuring any decision, you can enter \"Instructions\". for a list of commands and \"Keywords\" for a list of keywords.\n");
+            instructionsFont("Welcome to Illud's Oddesy! All commands will be one or two words.\nDuring any decision, you can enter \"Commands\". for a list of commands and \"Keywords\" for a list of keywords.\n");
             instructionsFont("When keywords appear in the text for the first time, they will look like ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("THIS");
             instructionsFont(".\n");
-            beat();
+            wait();
             instructionsFont("The game will sometimes pause in order to break up the text. When this happens, PRESS ANY KEY to continue.\n\n");
             paragraph();
 
             //narration for the beginning of the game.
 
-            beat();
+            wait();
             write("You are Illud Moribus, amateur spelunker.\n");
-            beat();
+            wait();
             write("Really amateur.\n");
-            beat();
+            wait();
             writeCustom("...actually", 100);
             write(", this will be your first ");
-            beat(); 
+            wait(); 
             writeSlower("spelunk.\n\n");
             paragraph();
 
@@ -135,13 +126,13 @@ namespace textAdventure
             write(" near your hometown. \nLocal legends say that monsters, wizards, and other fantastical creatures live there, guarding great treasure.\n");
             write("Supposedly, many have tried to claim these treasures for themselves, but ");
             writeSlower("\"None have ever returned alive.\"");
-            beat();
+            wait();
             writeSlower("\n...");
             write("Of course, no one returning alive doesn't mean much when everyone is too scared to explore the cave anyway.\n\n");
             paragraph();
 
             write("The sun is beginning to set, but you have finally arrived.\n");
-            beat();
+            wait();
             writeSlower("Your adventure begins");
             writeCustom("....", 1000);
             paragraph();
@@ -160,7 +151,28 @@ namespace textAdventure
              * 
              * 
              */
+            bool alive = true;          //used for gameover checks
+            bool checkPoint = true;   //used for NEW checkpoints
 
+            while (alive && checkPoint)
+            {
+                write("Test");
+                checkPoint = false; //leave one checkpoint, start the next
+                paragraph();
+            }//while alive--checkpoint system.
+
+            if (!alive)
+            {
+                write("Game over");
+            }//if
+            checkPoint = true;
+            
+            while (alive && checkPoint)
+            {
+
+                write("Second checkpoint");
+                paragraph();
+            }
         }//ch1
 
         static void chapterTwo()
@@ -194,6 +206,9 @@ namespace textAdventure
         {
 
             //Do lists need to be public to work as intended?
+            //Save/checkpoint system?Maybe checkpoints at beginning of each chapter?
+            //Actually, just use while loops for a basic checkpoint
+            //Use Do...while for room puzzles
 
             List<String> inventory = new List<String>(); //items used for health management, one time puzzles, etc.
             List<String> equipment = new List<String>(); //gear automatically equiped
@@ -208,12 +223,12 @@ namespace textAdventure
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
             //use console.beep for jumpscare?
-           
-            
 
-            opening(); //call opening method
-            
-            
+
+
+            //opening(); //call opening method
+
+            chapterOne();
         }//main
     }//class
 }//namespace
