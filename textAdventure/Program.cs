@@ -1,33 +1,148 @@
 ﻿/*                              Project Name:    textAdventure
  *                              Game Title:      Ilud's Oddessy
  *                              Created by:      Jared Clark on 4/11/19
- *                                               Wrote opening method, made list for inventory
+ *                                               Wrote opening method, made list for inventory.
+ *                                               
  *                              Edited by:       Jared Clark on 4/12/19
- *                                               Added methods for chapters, combat, title screen, ending
- *                                               Added lists for keywords, tools, treasures, equipment, characterStats
+ *                                               Added methods for chapters, combat, title screen, ending.
+ *                                               Added lists for keywords, tools, treasures, equipment, characterStats.
+ *                                               
  *                                               Jared Clark on 4/13/19
  *                                               Rewrote method names to be clearer.
+ *                                               
  *                                               Jared Clark on 4/14/19
  *                                               Removed methods and lists pertaining to combat in order to simplify gameplay.
  *                                               Removed separate list for reusable items to simplify gameplay.
  *                                               Added title screen ASCII art. Needs work on size.
  *                                               
+ *                                               Jared Clark on 4/15/19
+ *                                               Made lists for inventory, keywords, treasures public.
+ *                                               Added methods for adding to these lists.
+ *                                               Added methods for printing these lists.
+ *                                               
  */
 
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace textAdventure
-{
+{ 
     class Program
     {
-        static void waitOneSecond()  //used to wait for one second.
+
+        //public lists for keywords, inventory, etc., which will need to be called by different methods.
+        static List<string> inventory = new List<string>(); //stores items for puzzles
+        static List<String> keyWords = new List<String>(); //stores keywords as discovered
+        static List<String> treasures = new List<String>(); //stores treasures collected
+
+        //methods for gameplay
+
+        static string getUserInput(string text) 
+        {
+
+            Console.WriteLine(text);
+            return Console.ReadLine();
+        }//getUserInput
+
+
+
+        //methods to add to lists
+
+        static void addInventory(string item) 
+        {
+
+            inventory.Add(item);
+        }//addInventory
+
+        static void addTreasure(string treasure) 
+        {
+            treasures.Add(treasure);
+        }//addTreasure
+
+        static void addKeyWord(string keyword) 
+        {
+
+            keyWords.Add(keyword);
+        }//addKeyWord
+
+
+
+        //methods to write lists
+
+        static void checkInventory() 
+        {
+            for (int i = 0; i < inventory.Count; i++)
+            {
+
+                Console.WriteLine(inventory[i]);
+            }//for
+        }//checkInventory
+
+        static void checkTreasure()
+        {
+
+            for (int i = 0; i < treasures.Count; i++)
+            {
+                Console.WriteLine(treasures[i]);
+            }//for
+        }//checkTreasures
+
+        static void checkKeyWords()
+        {
+
+            for (int i = 0; i < keyWords.Count; i++)
+            {
+                Console.WriteLine(keyWords[i]);
+            }//for
+        }//checkKeyWords
+
+        static void checkCommands()  //Prints a full list of commands
+        {
+            List<string> commands = new List<String>();
+            for (int i = 0; i < commands.Count; i++)
+            {
+
+                Console.WriteLine("");
+            }//for
+        }//commands
+
+
+
+        //methods for fonts
+
+        static void keyWordFont(string word) //changes font color of a keyword and writes it at 100 MS.
+        {                                   
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            writeSpeedOneHundredMS(word.ToUpper());
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+        }//keyWordFont
+
+        static void instructionsFont(string text) //changes font color for instruction text.
+        {
+            //use color other than gray?
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write(text);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+        }//instructionsFont
+
+
+
+        //methods for pacing the text:
+
+        static void paragraphBreak()
+        {
+            Console.ReadLine();
+            Console.Clear();
+        }//paragraphBreak
+
+        static void waitOneSecond()  
         {
             System.Threading.Thread.Sleep(1000);
         }//waitOneSecond
 
-        static void waitCustomSeconds(int seconds)  //used to wait for any multiple of 1 second.
+        static void waitCustomSeconds(int seconds)  
         {
             for (int i =0; i<seconds ;i++)
             {
@@ -35,7 +150,7 @@ namespace textAdventure
             }//for
         }//waitCustomSeconds
 
-        static void writeSpeedFiftyMS(string text) //slows down Console.Write to 50 MS between each character.
+        static void writeSpeedFiftyMS(string text) 
         {                                         
             foreach(char c in text)
             {
@@ -44,7 +159,7 @@ namespace textAdventure
             }//foreach
         }//writeSpeedFiftyMS
 
-        static void writeSpeedOneHundredMS(string text) //slows down Console.Write to 100 MS between each character. 
+        static void writeSpeedOneHundredMS(string text) 
         {                                             
             foreach (char c in text)
             {
@@ -53,7 +168,7 @@ namespace textAdventure
             }//foreach
         }//writeSpeedOneHundredMS
 
-        static void writeSpeedCustom(string text, int time) //slows down Console.Write to any number of MS between each character.
+        static void writeSpeedCustom(string text, int time) 
         {                                                  
             foreach (char c in text)                      
             {
@@ -62,31 +177,9 @@ namespace textAdventure
             }//foreach
         }//writeSpeedCustom
 
-        static void paragraphBreak() //used to break up paragraphs
-        {
-            Console.ReadLine();
-            Console.Clear();
-        }//paragraphBreak
 
-        static void keyWordFont(string word) //changes font color of a keyword and writes it at 100 MS speed.
-        {                                   
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            writeSpeedOneHundredMS(word.ToUpper());
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            //LEARN KEYWORD
-        }//keyWordFont
 
-        static void instructionsFont(string text) //changes font color for instruction text.
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(text);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-        }//instructionsFont
-
-        static void commands()  //Prints a full list of commands
-        {
-
-        }//commands
+        //methods for the game text
 
         static void titleScreen()
         {
@@ -162,13 +255,6 @@ namespace textAdventure
             Console.ReadLine();
         }//titleScreen
 
-        static void themeSong()
-        {
-
-            //main theme?
-            Console.Beep(800, 1000);
-        }
-
         static void opening()
         {
             //Basic instructions
@@ -178,7 +264,6 @@ namespace textAdventure
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("THIS");
             instructionsFont(".\n");
-            waitOneSecond();
             instructionsFont("The game will sometimes pause in order to break up the text. When this happens, PRESS ANY KEY to continue.\n\n");
             paragraphBreak();
 
@@ -196,7 +281,7 @@ namespace textAdventure
             paragraphBreak();
 
             writeSpeedFiftyMS("There is a ");
-            keyWordFont("cave");
+            addKeyWord("cave");
             writeSpeedFiftyMS(" near your hometown. \nLocal legends say that monsters, wizards, and other fantastical creatures live there, guarding great treasure.\n");
             writeSpeedFiftyMS("Supposedly, many have tried to claim these treasures for themselves, but ");
             writeSpeedOneHundredMS("\"None have ever returned alive.\"");
@@ -226,27 +311,13 @@ namespace textAdventure
              * 
              */
             bool alive = true;          //used for gameover checks
-            bool checkPoint = true;   //used for NEW checkpoints
+            bool nextCheckPoint = false;   //used for NEW checkpoints
 
-            while (alive && checkPoint)
-            {
-                writeSpeedFiftyMS("Test");
-                checkPoint = false; //leave one checkpoint, start the next
-                paragraphBreak();
-            }//while alive--checkpoint system.
-
-            if (!alive)
-            {
-                writeSpeedFiftyMS("Game over");
-            }//if
-            checkPoint = true;
-            
-            while (alive && checkPoint)
+            do
             {
 
-                writeSpeedFiftyMS("Second checkpoint");
-                paragraphBreak();
-            }
+            }while (alive && !nextCheckPoint); //checkpoint 1
+           
         }//ch1
 
         static void chapterTwo()
@@ -274,31 +345,19 @@ namespace textAdventure
 
         }//ending
 
-        
+  
 
         static void Main(string[] args)
         {
-
-            //Do lists need to be public to work as intended?
-            //Save/checkpoint system?Maybe checkpoints at beginning of each chapter?
-            //Actually, just use while loops for a basic checkpoint
-            //Use Do...while for room puzzles
-
-            List<String> inventory = new List<String>(); //items used for health management, one time puzzles, etc.
-            List<String> keyWordsALL = new List<String>(); //keywords work even if undiscovered
-            List<String> keyWordsDiscovered = new List<String>(); //user can check keywords as discovered
-            List<String> treasures = new List<String>(); //can check during decisions. ASCII depiction in credits?
-
-
+            
             Console.Title = "Illud's Oddessy";
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-
-            /* drop combat, health, stats, and gear. "Combat" == puzzles. */
-
-
-            titleScreen();
-            opening(); //call opening method
+            
+            //opening(); //call opening method
             //chapterOne();
+           
+           
+           
         }//main
+
     }//class
 }//namespace
