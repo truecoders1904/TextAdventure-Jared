@@ -2,12 +2,15 @@
  *                              Game Title:      Ilud's Oddessy
  *                              Created by:      Jared Clark on 4/11/19
  *                                               Wrote opening method, made list for inventory
- *                              Edited on:       4/12/19
+ *                              Edited by:       Jared Clark on 4/12/19
  *                                               Added methods for chapters, combat, title screen, ending
  *                                               Added lists for keywords, tools, treasures, equipment, characterStats
- *                                               4/13/19
+ *                                               Jared Clark on 4/13/19
  *                                               Rewrote method names to be clearer.
- *                                         
+ *                                               Jared Clark on 4/14/19
+ *                                               Removed methods and lists pertaining to combat in order to simplify gameplay.
+ *                                               Removed separate list for reusable items to simplify gameplay.
+ *                                               Added title screen ASCII art. Needs work on size.
  *                                               
  */
 
@@ -32,8 +35,8 @@ namespace textAdventure
             }//for
         }//waitCustomSeconds
 
-        static void writeSpeedFiftyMS(string text) //uses foreach and Thread.Sleep to slow down the "typing speed" of Console.Write.
-        {                             //used for the chosen typical speed.
+        static void writeSpeedFiftyMS(string text) //slows down Console.Write to 50 MS between each character.
+        {                                         
             foreach(char c in text)
             {
                 Console.Write(c);
@@ -41,8 +44,8 @@ namespace textAdventure
             }//foreach
         }//writeSpeedFiftyMS
 
-        static void writeSpeedOneHundredMS(string text) //uses foreach and Thread.Sleep to slow down the "typing speed" of Console.Write 
-        {                                              //used for a chosen slower speed.
+        static void writeSpeedOneHundredMS(string text) //slows down Console.Write to 100 MS between each character. 
+        {                                             
             foreach (char c in text)
             {
                 Console.Write(c);
@@ -50,9 +53,9 @@ namespace textAdventure
             }//foreach
         }//writeSpeedOneHundredMS
 
-        static void writeSpeedCustom(string text, int time) //uses foreach and Thread.Sleep for different typing speeds.
-        {                                                  //used for any other speed.
-            foreach (char c in text)                      //also used with an empty string for an atypical pause.
+        static void writeSpeedCustom(string text, int time) //slows down Console.Write to any number of MS between each character.
+        {                                                  
+            foreach (char c in text)                      
             {
                 Console.Write(c);
                 System.Threading.Thread.Sleep(time);
@@ -65,15 +68,15 @@ namespace textAdventure
             Console.Clear();
         }//paragraphBreak
 
-        static void keyWordFont(string word) //changes font color of a keyword 
-        {                                   //writes keyword at a slower speed
+        static void keyWordFont(string word) //changes font color of a keyword and writes it at 100 MS speed.
+        {                                   
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             writeSpeedOneHundredMS(word.ToUpper());
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             //LEARN KEYWORD
         }//keyWordFont
 
-        static void instructionsFont(string text) //changes font color for instruction text
+        static void instructionsFont(string text) //changes font color for instruction text.
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(text);
@@ -85,18 +88,85 @@ namespace textAdventure
 
         }//commands
 
-
-        static double combat(double health)//more input?
-        {
-            return health;
-        }//combat
-
         static void titleScreen()
         {
             //draw ascii art for title
 
-            
+            //Needs work
+           Console.WriteLine(@"
+           @@@@@@@@@   + @ '     ,@@`                                       `@@:     @@@@,                                                                                                    
+           @@@@@@@@@   @@@@@    #@@@@.                                     `@@@@     @@@@.                                                                                                    
+           @@@@@@@@@   @@@@@    #@@@@.                                     `@@@@     @@@@,                                                                                                    
+           @@@@@@@@@   @@@@@    #@@@@.                                     `@@@@     @@@@:                                                                                                    
+            #@@@@@     @@@@@    #@@@@.                                     `@@@@     @@@@'                                                                                                    
+            #@@@@@     @@@@@    #@@@@.                                     `@@@@      @@@+                                                                                                    
+            #@@@@@     @@@@@    #@@@@.                                     `@@@@     `@@@#                                                                                                    
+            #@@@@@     @@@@@    #@@@@.                                     `@@@@     .@@@#                                                                                                    
+            #@@@@@     @@@@@    #@@@@.                              ; @.   `@@@@     ,@@@         ;`@ :                                                                                       
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@        @@@@@@@ `@@@@     :@@@       @@@@@@@@@#                                                                                    
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@      @@@@@@@@@@`@@@@               @@@@@@@@@@@                                                                                    
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@     .@@@@@@@@@@@@@@@              @@@@@@@@@@@@                                                                                    
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@     @@@@@@' .@@@@@@@             #@@@@:     @                                                                                     
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@    ,@@@@@     @@@@@@             '@@@@                                                                                            
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@    @@@@@+      @@@@@             '@@@@:                                                                                           
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@    @@@@@       `@@@@             #@@@@@@                                                                                          
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@    @@@@@       `@@@@              @@@@@@@@,                                                                                       
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@    @@@@@       `@@@@               @@@@@@@@@,                                                                                     
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@    @@@@@       `@@@@                `@@@@@@@@`                                                                                    
+            #@@@@@     @@@@@    #@@@@.    `@@@@       @@@@@    @@@@@       `@@@@                  ,@@@@@@@#                                                                                   
+            #@@@@@     @@@@@    #@@@@.    `@@@@#      @@@@@    @@@@@       `@@@@                    #@@@@@`                                                                                   
+            #@@@@@     @@@@@    #@@@@.    .@@@@,     .@@@@@    @@@@@#      @@@@@                      @@@@@                                                                                   
+            #@@@@@     @@@@@    #@@@@.    :@@@@@     @@@@@@    `@@@@@     @@@@@@             #,       @@@@                                                                                    
+          @@@@@@@@@@   @@@@@    #@@@@.    #@@@@@@@@@@@@@@@@    #@@@@@@+ `@@@@@@@             ,@@,     @@@@,                                                                                   
+          @@@@@@@@@@   @@@@@    #@@@@.     @@@@@@@@@@@@@@@@     @@@@@@@@@@@@@@@@             ,@@@@@@@@@@@@                                                                                    
+          @@@@@@@@@@   @@@@@    #@@@@.     #@@@@@@@@@ #@@@@      @@@@@@@@@@ @@@@             '@@@@@@@@@@@+                                                                                    
+          @@@@@@@@@@   @@@@@    #@@@@.      #@@@@@@@; #@@@@       @@@@@@@@  @@@@              `@@@@@@@@@                                                                                      
+          @@@@@@@@@@                          #`@`#                 .@@,                         ,@@`'                                                                                        
+                                                                                                                                                                                              
+                                                                                                                                                                           
+                                                                                       @@@@@                                                                                                  
+                                                         ,`@@`;                        @@@@@                                                                                                  
+                                                     #@@@@@@@@@@@                      @@@@@                                                                                                  
+                                                     @@@@@@@@@@@@@@;                   @@@@@                                                                                                  
+                                                   @@@@@@@@@@@@@@@@@,                  @@@@@                                                                                                  
+                                                  @@@@@@@@@@@@@@@@@@@#                 @@@@@                                                                                                  
+                                                 ,@@@@@@#      @@@@@@@                 @@@@@                                                                                                  
+                                                 @@@@@@          @@@@@+                @@@@@                                                                                                  
+                                                :@@@@@           @@@@@          @@@@;  @@@@@   ,@@@+        ;@@`#     +@@@@@@+        +@@@@@@+          ,@@@@@@       ,@@@+        ;@@`#      
+                                                @@@@@            .@@@@@      :@@@@@@@@ @@@@@   @@@@@        @@@@@    @@@@@@@@@@      @@@@@@@@@@       .@@@@@@@@@@     @@@@@        @@@@@      
+                                                @@@@@+           #@@@@@     :@@@@@@@@@@@@@@@   @@@@@+      +@@@@.   @@@@@@@@@@@     @@@@@@@@@@@      @@@@@@@@@@@@@    @@@@@+      +@@@@.      
+                                                @@@@@             @@@@@#    @@@@@@@@@@@@@@@@   :@@@@        @@@@#   @@@@ # ;@@@     @@@@ # ;@@@     ,@@@@@; '@@@@@.   :@@@@        @@@@#      
+                                               #@@@@@             @@@@@+   `@@@@@+  +@@@@@@@    @@@@@      @@@@@   @@@@`      @    @@@@`      @     @@@@@     @@@@@    @@@@@      @@@@@       
+                                               '@@@@@             @@@@@'   @@@@@+     @@@@@@    @@@@@'    #@@@@,   @@@@:           @@@@:           ,@@@@      #@@@@'   @@@@@'    #@@@@,       
+                                               '@@@@@             @@@@@'   @@@@@       @@@@@    +@@@@@    `@@@@    @@@@@           @@@@@           @@@@@       @@@@.   +@@@@@    `@@@@        
+                                               '@@@@@             @@@@@+  +@@@@`       @@@@@     @@@@@    @@@@@    @@@@@@@#        @@@@@@@#        @@@@@       @@@@@    @@@@@    @@@@@        
+                                               +@@@@@             @@@@@#  :@@@@:       @@@@@     .@@@@:  #@@@@,    #@@@@@@@@`      #@@@@@@@@`      @@@@@@@@@@@@@@@@@    .@@@@:  #@@@@,        
+                                               #@@@@@             @@@@@   ,@@@@'       @@@@@      @@@@@  `@@@@      +@@@@@@@@@+     +@@@@@@@@@+    @@@@@@@@@@@@@@@@@     @@@@@  `@@@@         
+                                                @@@@@+           '@@@@@   ,@@@@'       @@@@@      @@@@@  @@@@@         @@@@@@@@#       @@@@@@@@#   @@@@@@@@@@@@@@@@'     @@@@@  @@@@@         
+                                                @@@@@            @@@@@    :@@@@,       @@@@@      :@@@@,#@@@@:          '@@@@@@@        '@@@@@@@   @@@@@                 :@@@@,#@@@@:         
+                                                .@@@@@          +@@@@@+   +@@@@@       @@@@@       @@@@@.@@@@             +@@@@@          +@@@@@   @@@@@                  @@@@@.@@@@          
+                                                #@@@@@@        #@@@@@@     @@@@@      @@@@@@        @@@@@@@@@               @@@@            @@@@   @@@@@                   @@@@@@@@@          
+                                                 @@@@@@@:      @@@@@@#     @@@@@@    @@@@@@@       #@@@@@@@@'      @:      @@@@@   @:      @@@@@   :@@@@@        +        #@@@@@@@@'          
+                                                  @@@@@@@@@@@@@@@@@@.      :@@@@@@@@@@@@@@@@        @@@@@@@@       @@@ + '@@@@@@   @@@ + '@@@@@@    @@@@@@`+ #:@@@@        @@@@@@@@           
+                                                  #@@@@@@@@@@@@@@@@`        @@@@@@@@@@@.@@@@        .@@@@@@@       @@@@@@@@@@@@#   @@@@@@@@@@@@#    +@@@@@@@@@@@@@@        .@@@@@@@           
+                                                    @@@@@@@@@@@@@@+          @@@@@@@@@;#@@@@         @@@@@@'       @@@@@@@@@@@+    @@@@@@@@@@@+      +@@@@@@@@@@@@@         @@@@@@'           
+                                                      @@@@@@@@@@;              @@@@@@   @@@@         @@@@@@         `@@@@@@@        `@@@@@@@           `@@@@@@@@@+          @@@@@@            
+                                                                                                     '@@@@                                                                  '@@@@             
+                                                                                                     @@@@@+                                                                 @@@@@+            
+                                                                                                     @@@@@                                                                  @@@@@             
+                                                                                                    .@@@@                                                                  .@@@@              
+                                                                                                    @@@@@#                                                                 @@@@@#             
+                                                                                                   '@@@@@                                                                 '@@@@@              
+                                                                                                   .@@@@:                                                                 .@@@@:");
+
         }//titleScreen
+
+        static void themeSong()
+        {
+
+            //main theme?
+            Console.Beep(800, 1000);
+        }
 
         static void opening()
         {
@@ -214,9 +284,6 @@ namespace textAdventure
             //Use Do...while for room puzzles
 
             List<String> inventory = new List<String>(); //items used for health management, one time puzzles, etc.
-            List<String> equipment = new List<String>(); //gear automatically equiped
-            List<String> stats = new List<String>(); //Illud's health, strength, defense, current level and experience points.
-            List<String> tools = new List<String>(); //items used in more than one puzzle
             List<String> keyWordsALL = new List<String>(); //keywords work even if undiscovered
             List<String> keyWordsDiscovered = new List<String>(); //user can check keywords as discovered
             List<String> treasures = new List<String>(); //can check during decisions. ASCII depiction in credits?
@@ -225,12 +292,11 @@ namespace textAdventure
             Console.Title = "Illud's Oddessy";
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-            
+            /* drop combat, health, stats, and gear. "Combat" == puzzles. */
 
 
 
             opening(); //call opening method
-
             //chapterOne();
         }//main
     }//class
