@@ -159,6 +159,7 @@ namespace textAdventure
                                                                                                    '@@@@@                                                                 '@@@@@              
                                                                                                    .@@@@:                                                                 .@@@@:");
 
+            Console.ReadLine();
         }//titleScreen
 
         static void themeSong()
@@ -295,7 +296,7 @@ namespace textAdventure
             /* drop combat, health, stats, and gear. "Combat" == puzzles. */
 
 
-
+            titleScreen();
             opening(); //call opening method
             //chapterOne();
         }//main
