@@ -16,10 +16,12 @@
  *                                               Added title screen ASCII art. Needs work on size.
  *                                               
  *                                               Jared Clark on 4/15/19
- *                                               Made lists for inventory, keywords, treasures public.
+ *                                               Made lists for inventory, keywords, commands, treasures public.
  *                                               Added methods for adding to these lists.
  *                                               Added methods for printing these lists.
  *                                               Outlined chapters.
+ *                                               Wrote first chapter.
+ *                                               Added decision methods.
  *                                               
  */
 
@@ -50,7 +52,6 @@ namespace textAdventure
             commands.Add("check");
             commands.Add("punch");
             commands.Add("take");
-
             opening();
         }//main
 
@@ -135,22 +136,21 @@ namespace textAdventure
 
                 WriteSpeedFiftyMS("You see a figure, holding a ");
                 AddKeyWord("sword");
-                WriteSpeedFiftyMS(" . This figure is facing a hooded figure. The figure is holding out a skeletal hand, \ngathering dark magic, surely for some deadly spell.\n");
-                WriteSpeedOneHundredMS("It's a Lich.");
-                WriteSpeedFiftyMS("An undead sorceror. If liches are real...and if one is in this cave...");
-                WriteSpeedOneHundredMS("It's no wonder those who came before you didn't live to tell about it.");
+                WriteSpeedFiftyMS(".\nThe swordsman is facing a hooded man, who is holding out a skeletal hand, \ngathering dark magic, surely for some deadly spell.\n");
+                WriteSpeedOneHundredMS("It's a Lich!\n");
+                WriteSpeedFiftyMS("An undead sorceror. If liches are real...and if one is in this cave...\n");
+                WriteSpeedOneHundredMS("It's no wonder those who came here before you didn't live to tell about it.");
                 ParagraphBreak();
 
-                WriteSpeedFiftyMS("\"It's my brother.\"\nA man in a brown robe stands before you. It was his voice directing you to this room.");
-                WriteSpeedFiftyMS("\n\"It's been a long time since anyone has entered the Magic Cave. Perhaps you're the one who can finally free him?\"");
-                WriteSpeedFiftyMS("\nThere is a consecrated sword hidden deeper in this cavern. It's strong against dark magic. Nothing can save him at this point, \nbut you can at least end my brother's curse.");
-                WriteSpeedFiftyMS("\n\"I can guide your way. I can show you the magic sword and help you defeat the Lich's guardians. \nAnd, if it's what your heart truly desires, you can keep the treasures you find along the way.\"");
+                WriteSpeedFiftyMS("\"I see you've found my mural.\nIt's a warning to any adventurers who may enter this cave after my time is up...\nBut maybe, with your help, I can finally slay this lich.\"\nA man in a brown robe stands before you. It was his voice directing you to this room.");
+                WriteSpeedFiftyMS("\n\"There is a consecrated sword hidden deeper in this cavern.\nIt's strong against dark magic, but it is guarded by mythic beasts.\n");
+                WriteSpeedFiftyMS("\nI can guide your way. I can show you the magic sword and help you defeat the Lich's guardians.\nAnd, if it's what your heart truly desires, you can keep the treasures you find along the way.\"");
                 YesOrNoDecision("\"What do you say?\"", "\"Excellent!\"", "\"Take some time to reconsider...\"");
                 ParagraphBreak();
 
-                WriteSpeedFiftyMS("The old wizard points you towards an ancient-looking door. \n\"Your first trial lies within.\"");
-                WriteSpeedFiftyMS("As you open the door, you hear a hellish sound.");
-                WriteSpeedCustom("QUAAAACCCKKKK\n", 2000);
+                WriteSpeedFiftyMS("\nThe old wizard points you towards an ancient-looking door. \n\"Your first trial lies within.\"");
+                WriteSpeedFiftyMS("\nAs you open the door, you hear a hellish sound.");
+                WriteSpeedCustom("\n\"QUAAAACCCKKKK\"\n", 1000);
                 WriteSpeedFiftyMS("It sounds like a duck....but larger.\n");
                 WriteSpeedFiftyMS("Inside the room, you see a ");
                 AddKeyWord("LEVER");
@@ -363,6 +363,7 @@ namespace textAdventure
 
         static void AddTreasure(string treasure) 
         {
+            
             WriteSpeedFiftyMS($"\n[GOT {treasure}!]\n");
             treasures.Add(treasure);
         }//addTreasure
@@ -378,6 +379,7 @@ namespace textAdventure
             {
                 WriteSpeedFiftyMS(item);
                 Console.WriteLine("");
+
             }//foreach
         }//checkInventory
 
@@ -386,6 +388,7 @@ namespace textAdventure
 
             foreach (string treasure in treasures)
             {
+           
                 WriteSpeedFiftyMS(treasure);
                 Console.WriteLine("");
             }//foreach
