@@ -1,32 +1,4 @@
-﻿/*                              Project Name:    textAdventure
- *                              Game Title:      Ilud's Oddessy
- *                              Created by:      Jared Clark on 4/11/19
- *                                               Wrote opening method, made list for inventory.
- *                                               
- *                              Edited by:       Jared Clark on 4/12/19
- *                                               Added methods for chapters, combat, title screen, ending.
- *                                               Added lists for keywords, tools, treasures, equipment, characterStats.
- *                                               
- *                                               Jared Clark on 4/13/19
- *                                               Rewrote method names to be clearer.
- *                                               
- *                                               Jared Clark on 4/14/19
- *                                               Removed methods and lists pertaining to combat in order to simplify gameplay.
- *                                               Removed separate list for reusable items to simplify gameplay.
- *                                               Added title screen ASCII art. Needs work on size.
- *                                               
- *                                               Jared Clark on 4/15/19
- *                                               Made lists for inventory, keywords, commands, treasures public.
- *                                               Added methods for adding to these lists.
- *                                               Added methods for printing these lists.
- *                                               Outlined chapters.
- *                                               Wrote first chapter.
- *                                               Added decision methods.
- *                                               
- */
-
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -34,13 +6,11 @@ namespace textAdventure
 { 
     class Program
     {
-
         //public lists for keywords, inventory, etc., which will need to be called by different methods.
         static List<String> inventory = new List<String>(); //stores items for puzzles
         static List<String> keyWords = new List<String>(); //stores keywords as discovered
         static List<String> treasures = new List<String>(); //stores treasures collected
         static List<String> commands = new List<String>(); //stores list of commands
-
 
         static void Main(string[] args)
         {
@@ -53,13 +23,11 @@ namespace textAdventure
             commands.Add("punch");
             commands.Add("take");
             opening();
+
+            //TODO: REPLACE text with .txt, reduce similar methods.
         }//main
 
-
-
-
         //methods for the game text
-
 
         static void opening()
         {
@@ -180,9 +148,6 @@ namespace textAdventure
             Ending();
         }//ch1
 
-
-       
-
         static void Ending()
         {
             /*Outline:
@@ -196,16 +161,14 @@ namespace textAdventure
 
         static string GetUserInput(string text) 
         {
-
             WriteSpeedFiftyMS(text);
-            Console.WriteLine("");
+            Console.WriteLine();
             return Console.ReadLine().ToLower();
              
         }//getUserInput
 
         static void YesOrNoDecision(string prompt, string responseYes, string responseNo)
         {
-
             bool solved = false;
             string userInput = "";
             do
@@ -313,32 +276,27 @@ namespace textAdventure
 
                 else if (command == "check")
                 {
-
                     WriteSpeedFiftyMS($"You check {keyword}. You've learned nothing.\n");
                 }//elseif
 
                 //information responses
                 else if (command == "commands")
                 {
-
                     CheckCommands();
                 }//elseif
 
                 else if (command == "keywords")
                 {
-
                     CheckKeyWords();
                 }//elseif
 
                 else if (command == "treasures")
                 {
-
                     CheckTreasure();
                 }//elseif
 
                 else if (command == "inventory")
                 {
-
                     CheckInventory();
                 }//elseif
 
@@ -350,8 +308,6 @@ namespace textAdventure
             } while (!nextAction);
 
         }//userDecision
-
-
 
         //methods to add to lists
 
@@ -368,9 +324,6 @@ namespace textAdventure
             treasures.Add(treasure);
         }//addTreasure
 
-
-
-
         //methods to write lists
 
         static void CheckInventory() 
@@ -378,7 +331,7 @@ namespace textAdventure
             foreach (string item in inventory)
             {
                 WriteSpeedFiftyMS(item);
-                Console.WriteLine("");
+                Console.WriteLine();
 
             }//foreach
         }//checkInventory
@@ -390,7 +343,7 @@ namespace textAdventure
             {
            
                 WriteSpeedFiftyMS(treasure);
-                Console.WriteLine("");
+                Console.WriteLine();
             }//foreach
         }//checkTreasures
 
@@ -400,7 +353,7 @@ namespace textAdventure
             foreach (string keyword in keyWords)
             {
                 WriteSpeedFiftyMS(keyword);
-                Console.WriteLine("");
+                Console.WriteLine();
             }//foreach
         }//checkKeyWords
 
@@ -409,11 +362,9 @@ namespace textAdventure
             foreach (string command in commands)
             {
                 WriteSpeedFiftyMS(command);
-                Console.WriteLine("");
+                Console.WriteLine();
             }//foreach
         }//commands
-
-
 
         //methods for fonts
 
@@ -431,8 +382,6 @@ namespace textAdventure
             Console.Write(text);
             Console.ForegroundColor = ConsoleColor.DarkGreen;
         }//instructionsFont
-
-
 
         //methods for pacing the text:
 
