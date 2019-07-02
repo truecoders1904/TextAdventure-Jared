@@ -47,29 +47,29 @@ namespace textAdventure
 
             //narration for the beginning of the game.
 
-            WriteSpeedFiftyMS("You are Illud Moribus, amateur spelunker.\n");
-            WaitOneSecond();
-            WriteSpeedFiftyMS("Really amateur.\n");
-            WaitOneSecond();
-            WriteSpeedFiftyMS("Actually, this will be your first");
-            WriteSpeedCustom("...", 100);
-            WaitOneSecond(); 
-            WriteSpeedFiftyMS("spelunk.");
+            WriteSpeed("You are Illud Moribus, amateur spelunker.\n", 50);
+            WaitCustomSeconds(1);
+            WriteSpeed("Really amateur.\n", 50);
+            WaitCustomSeconds(1);
+            WriteSpeed("Actually, this will be your first", 50);
+            WriteSpeed("...", 100);
+            WaitCustomSeconds(1); 
+            WriteSpeed("spelunk.", 50);
             PauseText();
 
-            WriteSpeedFiftyMS("There is a ");
+            WriteSpeed("There is a ", 50);
             AddKeyWord("cave");
-            WriteSpeedFiftyMS(" near your hometown. \nLocal legends say that monsters, wizards, and other fantastical creatures live there, guarding great treasure.\n");
-            WriteSpeedFiftyMS("Supposedly, many have tried to claim these treasures for themselves, but ");
-            WriteSpeedOneHundredMS("\"None have ever returned alive.\"");
-            WaitOneSecond();
-            WriteSpeedFiftyMS("\nOf course, no one returning alive doesn't mean much when everyone is too frightened \nto explore the cave in the first place.");
+            WriteSpeed(" near your hometown. \nLocal legends say that monsters, wizards, and other fantastical creatures live there, guarding great treasure.\n", 50);
+            WriteSpeed("Supposedly, many have tried to claim these treasures for themselves, but ", 50);
+            WriteSpeed("\"None have ever returned alive.\"", 100);
+            WaitCustomSeconds(1);
+            WriteSpeed("\nOf course, no one returning alive doesn't mean much when everyone is too frightened \nto explore the cave in the first place.", 50);
             PauseText();
 
-            WriteSpeedFiftyMS("The sun is beginning to set, but you have finally arrived.\n");
+            WriteSpeed("The sun is beginning to set, but you have finally arrived.\n", 50);
             WaitCustomSeconds(2);
-            WriteSpeedOneHundredMS("Your adventure begins");
-            WriteSpeedCustom("....", 1000);
+            WriteSpeed("Your adventure begins", 100);
+            WriteSpeed("....", 1000);
             ParagraphBreak();
 
 
@@ -86,61 +86,61 @@ namespace textAdventure
             do
             {
                 YesOrNoDecision("You stand at the mouth of the cave. Do you enter?", "You steel yourself and enter the cave.","You are scared, but you refuse to be like the others, too cowardly to even start this adventure.\nYou take a few more minutes to collect yourself.");
-                WriteSpeedFiftyMS("As you enter the cave, the sun sets. You are surrounded by darkness.\n");
+                WriteSpeed("As you enter the cave, the sun sets. You are surrounded by darkness.\n", 50);
                 WaitCustomSeconds(2);
-                WriteSpeedFiftyMS("You hear a voice: \n\"There's a room to your left. You'll find what you need in there.\"\n");
-                WriteSpeedFiftyMS("Listening to a strange voice in a dark cave may not be the smartest decision you've ever made,\nbut you forgot to bring a torch, so you feel your way into the room.\n");
-                WriteSpeedFiftyMS("As you turn the corner, you see a lit ");
+                WriteSpeed("You hear a voice: \n\"There's a room to your left. You'll find what you need in there.\"\n", 50);
+                WriteSpeed("Listening to a strange voice in a dark cave may not be the smartest decision you've ever made,\nbut you forgot to bring a torch, so you feel your way into the room.\n", 50);
+                WriteSpeed("As you turn the corner, you see a lit ", 50);
                 AddKeyWord("torch");
-                WriteSpeedFiftyMS(" mounted on the wall. \nThe light is not enough to cover the whole chamber. The torch is all you see.\n");
+                WriteSpeed(" mounted on the wall. \nThe light is not enough to cover the whole chamber. The torch is all you see.\n", 50);
                 CommandKeywordDecisions("take torch", "What should you do with the torch?");
                 AddInventory("torch");
                 InstructionsFont("\nNow that you have a torch, you can use it to see dark parts of the cave.");
                 CommandKeywordDecisions("use torch", "You should have a look around the chamber.");
-                WriteSpeedFiftyMS("\nUsing the torch, you can see more of this part of the cave. \nThere's a sleeping bag--it looks like it's been used for years.\nSome old bottles, a spellbook written in a language you don't recognize, and a ");
+                WriteSpeed("\nUsing the torch, you can see more of this part of the cave. \nThere's a sleeping bag--it looks like it's been used for years.\nSome old bottles, a spellbook written in a language you don't recognize, and a ", 50);
                 AddKeyWord("mural");
                 CommandKeywordDecisions("check mural", "\"Maybe I should have a closer look at that...\"");
                 ParagraphBreak();
 
-                WriteSpeedFiftyMS("You see a figure, holding a ");
+                WriteSpeed("You see a figure, holding a ", 50);
                 AddKeyWord("sword");
-                WriteSpeedFiftyMS(".\nThe swordsman is facing a hooded man, who is holding out a skeletal hand, \ngathering dark magic, surely for some deadly spell.\n");
-                WriteSpeedOneHundredMS("It's a Lich!\n");
-                WriteSpeedFiftyMS("An undead sorceror. If liches are real...and if one is in this cave...\n");
-                WriteSpeedOneHundredMS("It's no wonder those who came here before you didn't live to tell about it.");
+                WriteSpeed(".\nThe swordsman is facing a hooded man, who is holding out a skeletal hand, \ngathering dark magic, surely for some deadly spell.\n", 50);
+                WriteSpeed("It's a Lich!\n", 100);
+                WriteSpeed("An undead sorceror. If liches are real...and if one is in this cave...\n", 50);
+                WriteSpeed("It's no wonder those who came here before you didn't live to tell about it.", 100);
                 ParagraphBreak();
 
-                WriteSpeedFiftyMS("\"I see you've found my mural.\nIt's a warning to any adventurers who may enter this cave after my time is up...\nBut maybe, with your help, I can finally slay this lich.\"\nA man in a brown robe stands before you. It was his voice directing you to this room.");
-                WriteSpeedFiftyMS("\n\"There is a consecrated sword hidden deeper in this cavern.\nIt's strong against dark magic, but it is guarded by mythic beasts.\n");
-                WriteSpeedFiftyMS("\nI can guide your way. I can show you the magic sword and help you defeat the Lich's guardians.\nAnd, if it's what your heart truly desires, you can keep the treasures you find along the way.\"");
+                WriteSpeed("\"I see you've found my mural.\nIt's a warning to any adventurers who may enter this cave after my time is up...\nBut maybe, with your help, I can finally slay this lich.\"\nA man in a brown robe stands before you. It was his voice directing you to this room.", 50);
+                WriteSpeed("\n\"There is a consecrated sword hidden deeper in this cavern.\nIt's strong against dark magic, but it is guarded by mythic beasts.\n", 50);
+                WriteSpeed("\nI can guide your way. I can show you the magic sword and help you defeat the Lich's guardians.\nAnd, if it's what your heart truly desires, you can keep the treasures you find along the way.\"", 50);
                 YesOrNoDecision("\"What do you say?\"", "\"Excellent!\"", "\"Take some time to reconsider...\"");
                 ParagraphBreak();
 
-                WriteSpeedFiftyMS("\nThe old wizard points you towards an ancient-looking door. \n\"Your first trial lies within.\"");
-                WriteSpeedFiftyMS("\nAs you open the door, you hear a hellish sound.");
-                WriteSpeedCustom("\n\"QUAAAACCCKKKK\"\n", 1000);
-                WriteSpeedFiftyMS("It sounds like a duck....but larger.\n");
-                WriteSpeedFiftyMS("Inside the room, you see a ");
+                WriteSpeed("\nThe old wizard points you towards an ancient-looking door. \n\"Your first trial lies within.\"", 50);
+                WriteSpeed("\nAs you open the door, you hear a hellish sound.", 50);
+                WriteSpeed("\n\"QUAAAACCCKKKK\"\n", 1000);
+                WriteSpeed("It sounds like a duck....but larger.\n", 50);
+                WriteSpeed("Inside the room, you see a ", 50);
                 AddKeyWord("LEVER");
-                WriteSpeedFiftyMS(", a ");
+                WriteSpeed(", a ", 50);
                 AddKeyWord("TABLE");
-                WriteSpeedFiftyMS(", and a ");
+                WriteSpeed(", and a ", 50);
                 AddKeyWord("CAULDRON");
                 CommandKeywordDecisions("use lever", "A lever, a table, and a cauldron. What should you do?");
                 ParagraphBreak();
 
                 Console.WriteLine("SUDDENLY, it drops from the cealing!\n");
-                WriteSpeedOneHundredMS("A. HORSE. SIZED. DUCK.\n");
-                WriteSpeedFiftyMS("...why do they even have that lever?\n");
+                WriteSpeed("A. HORSE. SIZED. DUCK.\n", 100);
+                WriteSpeed("...why do they even have that lever?\n", 50);
                 CommandKeywordDecisions("use torch", "What should you do in the face of such danger...?");
                 ParagraphBreak();
 
-                WriteSpeedFiftyMS("...Fire works. That was actually kind of easy.\n");
+                WriteSpeed("...Fire works. That was actually kind of easy.\n", 50);
                 Console.WriteLine("[Duck-Sized Horse: Slain!]");
-                WriteSpeedFiftyMS("\nAfter the creature dies, two objects drop from its cealing perch.");
+                WriteSpeed("\nAfter the creature dies, two objects drop from its cealing perch.", 50);
                 AddInventory("MAGIC_SWORD");
                 AddTreasure("Golden Scepter");
-                WriteSpeedFiftyMS("\nYou wonder why it had those....oh well.");
+                WriteSpeed("\nYou wonder why it had those....oh well.", 50);
                 nextCheckPoint = true;
 
             }while (alive && !nextCheckPoint); //checkpoint 1
@@ -155,13 +155,13 @@ namespace textAdventure
              * 
              * 
              * */
-            WriteSpeedCustom("TO BE CONTINUED....", 2000);
+            WriteSpeed("TO BE CONTINUED....", 2000);
         }//ending
         //methods for gameplay
 
         static string GetUserInput(string text) 
         {
-            WriteSpeedFiftyMS(text);
+            WriteSpeed(text, 50);
             Console.WriteLine();
             return Console.ReadLine().ToLower();
              
@@ -245,38 +245,38 @@ namespace textAdventure
 
                 if (nextAction)
                 {
-                    WriteSpeedFiftyMS($"You {command} the {keyword}.");
+                    WriteSpeed($"You {command} the {keyword}.", 50);
                 }//true path
 
                 else if (!validCommand)
                 {
-                    WriteSpeedFiftyMS("Invalid command.");
+                    WriteSpeed("Invalid command.", 50);
                 }//elseif
 
                 else if (!validKeyword)
                 {
-                    WriteSpeedFiftyMS("Invalid keyword.");
+                    WriteSpeed("Invalid keyword.", 50);
                 }//elseif
 
                 else if (!validCommand && !validKeyword)
                 {
-                    WriteSpeedFiftyMS("Invalid command.\nInvalid Keyword.\n");
+                    WriteSpeed("Invalid command.\nInvalid Keyword.\n", 50);
                 }//elseif
 
                 //"funny" responses
                 else if (command == "punch")
                 {
-                    WriteSpeedFiftyMS($"You punch the {keyword}. Your hand hurts. Nothing else happened.\n");
+                    WriteSpeed($"You punch the {keyword}. Your hand hurts. Nothing else happened.\n", 50);
                 }//elseif
 
                 else if (command == "use")
                 {
-                    WriteSpeedFiftyMS($"You try to use {keyword}, but nothing happened.\n");
+                    WriteSpeed($"You try to use {keyword}, but nothing happened.\n", 50);
                 }//elseif
 
                 else if (command == "check")
                 {
-                    WriteSpeedFiftyMS($"You check {keyword}. You've learned nothing.\n");
+                    WriteSpeed($"You check {keyword}. You've learned nothing.\n", 50);
                 }//elseif
 
                 //information responses
@@ -313,14 +313,14 @@ namespace textAdventure
 
         static void AddInventory(string item) 
         {
-            WriteSpeedFiftyMS($"\n[GOT {item}!]\n");
+            WriteSpeed($"\n[GOT {item}!]\n", 50);
             inventory.Add(item);
         }//addInventory
 
         static void AddTreasure(string treasure) 
         {
             
-            WriteSpeedFiftyMS($"\n[GOT {treasure}!]\n");
+            WriteSpeed($"\n[GOT {treasure}!]\n", 50);
             treasures.Add(treasure);
         }//addTreasure
 
@@ -330,7 +330,7 @@ namespace textAdventure
         {
             foreach (string item in inventory)
             {
-                WriteSpeedFiftyMS(item);
+                WriteSpeed(item, 50);
                 Console.WriteLine();
 
             }//foreach
@@ -342,7 +342,7 @@ namespace textAdventure
             foreach (string treasure in treasures)
             {
            
-                WriteSpeedFiftyMS(treasure);
+                WriteSpeed(treasure, 50);
                 Console.WriteLine();
             }//foreach
         }//checkTreasures
@@ -352,7 +352,7 @@ namespace textAdventure
 
             foreach (string keyword in keyWords)
             {
-                WriteSpeedFiftyMS(keyword);
+                WriteSpeed(keyword, 50);
                 Console.WriteLine();
             }//foreach
         }//checkKeyWords
@@ -361,7 +361,7 @@ namespace textAdventure
         {
             foreach (string command in commands)
             {
-                WriteSpeedFiftyMS(command);
+                WriteSpeed(command, 50);
                 Console.WriteLine();
             }//foreach
         }//commands
@@ -371,7 +371,7 @@ namespace textAdventure
         static void AddKeyWord(string word) //changes font color of a keyword and writes it at 100 MS. Add keyword to list
         {                                   
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            WriteSpeedOneHundredMS(word.ToUpper());
+            WriteSpeed(word.ToUpper(), 100);
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             keyWords.Add(word);
         }//keyWordFont
@@ -399,38 +399,15 @@ namespace textAdventure
             Console.ReadLine();
         }//pauseText
 
-        static void WaitOneSecond()  
-        {
-            System.Threading.Thread.Sleep(1000);
-        }//waitOneSecond
-
         static void WaitCustomSeconds(int seconds)  
         {
-            for (int i =0; i<seconds ;i++)
+            for (int i =0; i < seconds ;i++)
             {
               System.Threading.Thread.Sleep(1000);
             }//for
         }//waitCustomSeconds
 
-        static void WriteSpeedFiftyMS(string text) 
-        {                                         
-            foreach(char c in text)
-            {
-                Console.Write(c);
-                System.Threading.Thread.Sleep(50);
-            }//foreach
-        }//writeSpeedFiftyMS
-
-        static void WriteSpeedOneHundredMS(string text) 
-        {                                             
-            foreach (char c in text)
-            {
-                Console.Write(c);
-                System.Threading.Thread.Sleep(100);
-            }//foreach
-        }//writeSpeedOneHundredMS
-
-        static void WriteSpeedCustom(string text, int time) 
+        static void WriteSpeed(string text, int time) 
         {                                                  
             foreach (char c in text)                      
             {
